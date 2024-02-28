@@ -11,9 +11,11 @@ import SwiftUI
 class AlarmViewModel: ObservableObject {
     @Published var alarms: [Alarm] = []
     
-    func addAlarm(time: String, label: String) {
-        let alarm = Alarm(id: UUID(), time: time, label: label, isEnabled: false)
+    func addAlarm(time: String, label: String, date: Date) {
+        let alarm = Alarm(id: UUID(), date: date, time: time, label: label, isEnabled: false)
         alarms.append(alarm)
+        // sorts alarms by date from earliest-latest
+        alarms.sort(by: {$0.date < $1.date})
     }
     
     func deleteAlarm(index: Int) {
@@ -33,5 +35,4 @@ class AlarmViewModel: ObservableObject {
         let currentTimeArr = alarm.time.components(separatedBy: " ")
         return currentTimeArr[1]
     }
-    
 }

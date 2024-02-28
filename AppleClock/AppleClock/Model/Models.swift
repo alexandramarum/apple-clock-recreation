@@ -27,6 +27,7 @@ struct TimeZones: Codable {
 
 struct Alarm: Identifiable {
     var id: UUID
+    let date: Date
     let time: String
     let label: String
     var isEnabled: Bool

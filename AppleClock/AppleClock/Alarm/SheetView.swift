@@ -27,7 +27,7 @@ struct SheetView: View {
                 Spacer()
                 Button {
                     isShowingSheet.toggle()
-                    vm.addAlarm(time: sheetVm.time, label: sheetVm.label)
+                    vm.addAlarm(time: sheetVm.time, label: sheetVm.label, date: sheetVm.date)
                 } label: {
                     Text("Save")
                         .bold()
@@ -38,7 +38,7 @@ struct SheetView: View {
             Spacer()
 
             HStack {
-                DatePicker("",selection: $sheetVm.selectedTime, displayedComponents: [.hourAndMinute])
+                DatePicker("",selection: $sheetVm.date, displayedComponents: [.hourAndMinute])
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
             }

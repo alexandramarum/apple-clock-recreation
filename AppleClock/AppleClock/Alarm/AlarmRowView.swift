@@ -60,7 +60,7 @@ struct AlarmRowView: View {
 
 struct AlarmRowView_Previews: PreviewProvider {
     static var previews: some View {
-        let alarm = Binding.constant(Alarm(id: UUID(), time: "12:31 AM", label: "Test Test Test Test Test TestTestTestTestTestT Test Test Test Test Test Test", isEnabled: false))
+        let alarm = Binding.constant(Alarm(id: UUID(), date: Date.now, time: "12:31 AM", label: "Test Test Test Test Test TestTestTestTestTestT Test Test Test Test Test Test", isEnabled: false))
         return AlarmRowView(vm: AlarmViewModel(), alarm: alarm)
     }
 }

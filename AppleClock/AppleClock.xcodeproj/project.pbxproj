@@ -60,6 +60,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F816B01F2B8954440083BCB6 /* World Clock */ = {
+			isa = PBXGroup;
+			children = (
+				F84DDD042B191F4F0012A31D /* WorldClockViewModel.swift */,
+				F8385C212B190F2000E081FD /* WorldClockView.swift */,
+			);
+			path = "World Clock";
+			sourceTree = "<group>";
+		};
+		F816B0202B89545C0083BCB6 /* Stopwatch */ = {
+			isa = PBXGroup;
+			children = (
+				F84DDD0E2B1C2D200012A31D /* StopwatchViewModel.swift */,
+				F8385C232B190F2F00E081FD /* StopwatchView.swift */,
+				F84DDD122B1C34430012A31D /* LapViewModel.swift */,
+				F84DDD102B1C2E4B0012A31D /* LapView.swift */,
+			);
+			path = Stopwatch;
+			sourceTree = "<group>";
+		};
+		F816B0212B89547B0083BCB6 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				F84DDD0A2B1BFFBB0012A31D /* SheetViewModel.swift */,
+				F84DDD0C2B1C02C50012A31D /* SheetView.swift */,
+				F84DDD062B1A6DB50012A31D /* AlarmViewModel.swift */,
+				F8385C272B190F5800E081FD /* AlarmView.swift */,
+				F84DDD082B1BC0250012A31D /* AlarmRowView.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		F816B0222B8954F60083BCB6 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				F84DDD142B1D15D20012A31D /* TimerViewModel.swift */,
+				F8385C292B190F6E00E081FD /* TimerView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		F8385C072B190A9500E081FD = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +122,10 @@
 			children = (
 				F8385C132B190A9500E081FD /* AppleClockApp.swift */,
 				F8385C152B190A9500E081FD /* ContentView.swift */,
-				F8385C2F2B191DE600E081FD /* Views */,
+				F816B0222B8954F60083BCB6 /* Timer */,
+				F816B0212B89547B0083BCB6 /* Alarm */,
+				F816B0202B89545C0083BCB6 /* Stopwatch */,
+				F816B01F2B8954440083BCB6 /* World Clock */,
 				F84DDD032B191F240012A31D /* Model */,
 				F8385C172B190A9600E081FD /* Assets.xcassets */,
 				F8385C192B190A9600E081FD /* Preview Content */,
@@ -97,30 +141,10 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F8385C2F2B191DE600E081FD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F8385C212B190F2000E081FD /* WorldClockView.swift */,
-				F8385C232B190F2F00E081FD /* StopwatchView.swift */,
-				F8385C292B190F6E00E081FD /* TimerView.swift */,
-				F8385C272B190F5800E081FD /* AlarmView.swift */,
-				F84DDD082B1BC0250012A31D /* AlarmRowView.swift */,
-				F84DDD0C2B1C02C50012A31D /* SheetView.swift */,
-				F84DDD102B1C2E4B0012A31D /* LapView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F84DDD032B191F240012A31D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F8385C2B2B19177300E081FD /* Models.swift */,
-				F84DDD062B1A6DB50012A31D /* AlarmViewModel.swift */,
-				F84DDD042B191F4F0012A31D /* WorldClockViewModel.swift */,
-				F84DDD0A2B1BFFBB0012A31D /* SheetViewModel.swift */,
-				F84DDD0E2B1C2D200012A31D /* StopwatchViewModel.swift */,
-				F84DDD122B1C34430012A31D /* LapViewModel.swift */,
-				F84DDD142B1D15D20012A31D /* TimerViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

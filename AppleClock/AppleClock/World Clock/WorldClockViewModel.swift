@@ -19,7 +19,7 @@ class WorldClockViewModel: ObservableObject {
     }
     
     func getData() async {
-        print("We are accessing the url \(urlString)")
+        print("Accessing \(urlString)")
         
         guard let url = URL(string: urlString) else {
             print("ERROR: Could not create a URL from \(urlString)")
@@ -44,6 +44,12 @@ class WorldClockViewModel: ObservableObject {
         if let slash = location.firstIndex(of: "/") {
             var city = String(location[location.index(after: slash)...])
             city = city.replacingOccurrences(of: "_", with: " ")
+            for clock in worldClocks {
+                if clock.city == city {
+                    print("Timezone already exists in world clock!")
+                    return
+                }
+            }
             worldClocks.append(WorldClock(id: UUID(), city: city, timeZone: TimeZone.init(identifier: location) ?? TimeZone.current))
         } else {
             print("ERROR: Location does not contain '/'")

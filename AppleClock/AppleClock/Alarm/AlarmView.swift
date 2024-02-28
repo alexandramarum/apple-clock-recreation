@@ -56,7 +56,6 @@ struct AlarmView: View {
                                 .bold()
                             Spacer()
                         }
-                        
                         ForEach(vm.alarms.indices, id: \.self) { index in
                             AlarmRowView(vm: vm, alarm: $vm.alarms[index])
                         }
@@ -88,12 +87,8 @@ struct AlarmView: View {
             .accentColor(.orange)
         }
     }
-    
+}
 
-        
-        struct AlarmView_Previews: PreviewProvider {
-            static var previews: some View {
-                AlarmView()
-            }
-        }
-    }
+#Preview {
+    AlarmView(vm: AlarmViewModel(), isShowingSheet: false)
+}

@@ -15,7 +15,6 @@ struct AlarmRowView: View {
 
     var body: some View {
         VStack{
-            Divider()
             HStack {
                 VStack{
                     HStack (alignment: .bottom){

@@ -36,7 +36,7 @@ struct WorldClockView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $isShowingSheet) {
-                    TimezoneView(vm: vm, searchText: "", isShowingSheet: $isShowingSheet)
+                    TimezoneView(vm: vm, isShowingSheet: $isShowingSheet)
                 }
             )
             .preferredColorScheme(.dark)
@@ -70,8 +70,8 @@ struct WorldClockRow: View {
 }
 
 struct TimezoneView: View {
-    @StateObject var vm: WorldClockViewModel
-    @State var searchText: String
+    @ObservedObject var vm: WorldClockViewModel
+    @State private var searchText: String = ""
     @Binding var isShowingSheet: Bool
 
     var body: some View {
@@ -96,7 +96,6 @@ struct TimezoneView: View {
         .searchable(text: $searchText)
     }
     
-    // is this better suited for VM?
     var searchResults: [String] {
         return searchText.isEmpty ? vm.locationArray : vm.locationArray.filter { $0.contains(searchText) }
     }

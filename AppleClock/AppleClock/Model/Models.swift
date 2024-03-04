@@ -20,11 +20,6 @@ struct WorldClock: Identifiable {
     }
 }
 
-// Couldn't be used to decode timezone api JSON?? Considered it a dictionary<String, any>
-struct TimeZones: Codable {
-    let timezones: [String]
-}
-
 struct Alarm: Identifiable {
     var id: UUID
     let date: Date
@@ -36,7 +31,7 @@ struct Alarm: Identifiable {
 struct Lap {
     var id = UUID()
     let number: Int
-    let time: Double
+    let time: String
 }
 
 struct clockTimer {

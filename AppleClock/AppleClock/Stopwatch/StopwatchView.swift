@@ -7,7 +7,7 @@ struct StopwatchView: View {
 
     var body: some View {
         VStack {
-            Text("\(vmLap.elapsedTime)")
+            Text("\(vmLap.getTime(elapsedTime: vmLap.elapsedTime))")
                 .font(.custom("", size: 50, relativeTo: .body))
                 .fontDesign(.rounded)
                 .padding()
@@ -19,7 +19,7 @@ struct StopwatchView: View {
                         vmStopwatch.clearAll()
                         vmLap.clearAll()
                     } else {
-                        vmStopwatch.addLap(lap: Lap(number: vmStopwatch.number + 1, time: vmLap.lapElapsedTime))
+                        vmStopwatch.addLap(lap: Lap(number: vmStopwatch.number + 1, time: vmLap.getTime(elapsedTime: vmLap.lapElapsedTime)))
                         vmLap.clearLap()
                         vmLap.startLapTimer()
                     }

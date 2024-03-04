@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LapView: View {
+    @ObservedObject var vm = StopwatchViewModel()
     var lap: Lap
     
     var body: some View {
@@ -26,10 +27,4 @@ struct LapView: View {
         .accentColor(.orange)
     }
     
-    struct LapView_Previews: PreviewProvider {
-        static var previews: some View {
-            LapView(lap: Lap(number: 1, time: 4.000))
-        }
-    }
-
 }

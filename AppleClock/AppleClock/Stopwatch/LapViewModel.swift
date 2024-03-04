@@ -53,4 +53,10 @@ class LapViewModel: ObservableObject {
         lapStartTime = Date()
         lapElapsedTime = 0.0
     }
+    
+    func getTime(elapsedTime: Double) -> String {
+        let seconds: Double = elapsedTime.truncatingRemainder(dividingBy: 60)
+        let minutes = floor(elapsedTime/60)
+        return "\(minutes < 10 ? "0" : "")\(Int(minutes)):\(seconds < 10 ? "0" : "")\(String(format: "%.2f", seconds))"
+    }
 }

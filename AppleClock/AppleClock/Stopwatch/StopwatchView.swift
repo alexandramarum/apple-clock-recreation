@@ -4,7 +4,7 @@ import SwiftUI
 struct StopwatchView: View {
     @StateObject var vmLap = LapViewModel()
     @StateObject var vmStopwatch = StopwatchViewModel()
-
+    
     var body: some View {
         VStack {
             Text("\(vmLap.getTime(elapsedTime: vmLap.elapsedTime))")
@@ -12,7 +12,7 @@ struct StopwatchView: View {
                 .fontDesign(.rounded)
                 .padding()
                 .padding()
-
+            
             HStack {
                 Button {
                     if vmLap.isPaused {
@@ -44,9 +44,9 @@ struct StopwatchView: View {
                             .padding()
                     }
                 }
-
+                
                 Spacer()
-
+                
                 Button {
                     vmLap.togglePause()
                 } label: {
@@ -73,12 +73,12 @@ struct StopwatchView: View {
             }
             .padding()
             .padding()
-
+            
             Divider()
             
             ScrollView {
                 ForEach(vmStopwatch.laps.reversed(), id: \.id) { lap in
-                    LapView(lap: lap)
+                    LapView(lap: lap, color: vmStopwatch.getLapColor(thisLap: lap))
                 }
             }
         }

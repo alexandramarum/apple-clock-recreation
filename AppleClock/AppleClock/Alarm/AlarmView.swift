@@ -11,6 +11,7 @@ import SwiftUI
 struct AlarmView: View {
     @StateObject var vm = AlarmViewModel()
     @State var isShowingSheet = false
+    @State var editAlarm: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -73,9 +74,17 @@ struct AlarmView: View {
             .navigationTitle("Alarm")
             .navigationBarItems(
                 leading:
-                Button {} label: {
-                    Text("Edit")
-
+                Button {
+                    editAlarm.toggle()
+                    if editAlarm {
+                        vm.alarmState = .edit
+                    } else {
+                        vm.alarmState = .working
+                    }
+// Doesn't work. Why?
+//                    editAlarm ? vm.alarmState = .edit : vm.alarmState = .working
+                } label: {
+                    vm.alarmState == .edit ? Text("Done") : Text("Edit")
                 },
                 trailing:
                 Button {
@@ -84,7 +93,7 @@ struct AlarmView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $isShowingSheet) {
-                    SheetView(isShowingSheet: $isShowingSheet, vm: vm, sheetVm: SheetViewModel())
+                    SheetView(isShowingSheet: $isShowingSheet, vm: vm, sheetVm: SheetViewModel(date: Date(), label: "", state: .add, alarm: nil))
                 }
             )
         }

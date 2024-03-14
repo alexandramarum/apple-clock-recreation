@@ -8,56 +8,64 @@ struct ClockTimerView: View {
     
     var body: some View {
         VStack {
+            // Picker
             HStack {
-                Picker("Hours", selection: $hours) {
-                    ForEach(0..<24) {
-                        Text("\($0)hrs")
+                HStack{
+                    Picker("Hours", selection: $hours) {
+                        ForEach(0..<24) {
+                            Text("\($0)")
+                        }
+                        
                     }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(width: 60)
+                    Text("hours")
+                        .padding(-10)
                 }
-                .pickerStyle(WheelPickerStyle())
-                .frame(width: 80)
-                
-                Picker("Minutes", selection: $minutes) {
-                    ForEach(0..<60) {
-                        Text("\($0)min")
+                HStack {
+                    Picker("Minutes", selection: $minutes) {
+                        ForEach(0..<60) {
+                            Text("\($0)")
+                        }
                     }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(width: 60)
+                    Text("min")
+                        .padding(-10)
                 }
-                .pickerStyle(WheelPickerStyle())
-                .frame(width: 80)
-                
-                Picker("Seconds", selection: $seconds) {
-                    ForEach(0..<60) {
-                        Text("\($0)sec")
+                HStack {
+                    Picker("Seconds", selection: $seconds) {
+                        ForEach(0..<60) {
+                            Text("\($0)")
+                        }
                     }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(width: 60)
+                    Text("sec")
+                        .padding(-10)
                 }
-                .pickerStyle(WheelPickerStyle())
-                .frame(width: 80)
             }
             .padding()
+            .background() {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundStyle(.white)
+                    .opacity(0.43)
+                    .frame(height: 30)
+            }
             
-            HStack{
+            // Buttons
+            HStack {
                 Button {
                     if vm.timer.isTiming {
                         vm.timer.isTiming.toggle()
                     }
                 } label: {
-                    if vm.timer.isTiming {
+                    Circle()
+                        .frame(width: 85, height: 85)
+                        .foregroundColor(Color.gray.opacity(0.3))
+                        .overlay {
                         Text("Cancel")
-                            .foregroundColor(.white)
-                            .background(
-                                Circle()
-                                    .frame(width: 85, height: 85)
-                                    .foregroundColor(Color.gray.opacity(0.3))
-                            )
-                            .padding()
-                    } else {
-                        Text("Cancel")
-                            .foregroundColor(.gray)
-                            .background(
-                                Circle()
-                                    .frame(width: 85, height: 85)
-                                    .foregroundColor(Color.gray.opacity(0.3))
-                            )
+                                .foregroundColor(vm.timer.isTiming ? .white : .gray)
                             .padding()
                     }
                 }
@@ -72,38 +80,35 @@ struct ClockTimerView: View {
                     }
                 } label: {
                     if vm.timer.isTiming && !vm.timer.isPaused {
-                        Text("Pause  ")
-                            .foregroundColor(.orange)
-                            .background(
-                                Circle()
-                                    .frame(width: 85, height: 85)
-                                    .foregroundColor(Color.orange.opacity(0.3))
-                            )
-                            .padding()
+                        Circle()
+                            .frame(width: 85, height: 85)
+                            .foregroundColor(Color.orange.opacity(0.3))
+                            .overlay {
+                                Text("Pause  ")
+                                    .foregroundColor(.orange)
+                            }
                     } else if vm.timer.isTiming && vm.timer.isPaused {
-                        Text("Resume")
-                            .foregroundColor(.green)
-                            .background(
-                                Circle()
-                                    .frame(width: 85, height: 85)
-                                    .foregroundColor(Color.green.opacity(0.3))
-                            )
-                            .padding()
+                        Circle()
+                            .frame(width: 85, height: 85)
+                            .foregroundColor(Color.green.opacity(0.3))
+                            .overlay {
+                                Text("Resume")
+                                    .foregroundColor(.green)
+                            }
                     } else {
-                        Text("Start")
-                            .foregroundColor(.green)
-                            .background(
-                                Circle()
-                                    .frame(width: 85, height: 85)
-                                    .foregroundColor(Color.green.opacity(0.3))
-                            )
-                            .padding()
+                        Circle()
+                            .frame(width: 85, height: 85)
+                            .foregroundColor(Color.green.opacity(0.3))
+                            .overlay {
+                                Text("Start")
+                                    .foregroundColor(.green)
+                            }
                     }
-                    
                 }
             }
             .padding()
             
+            // Controls
             List {
                 HStack {
                     Text("When Timer Ends")
@@ -117,7 +122,7 @@ struct ClockTimerView: View {
             .preferredColorScheme(.dark)
             .accentColor(.orange)
             
-            Spacer()
+           // Recents
         }
     }
 }

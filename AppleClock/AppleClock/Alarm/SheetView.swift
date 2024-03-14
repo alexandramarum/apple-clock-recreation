@@ -18,16 +18,23 @@ struct SheetView: View {
             HStack {
                 Button {
                     isShowingSheet.toggle()
+                    vm.alarmState = .working
                 } label: {
                     Text("Cancel")
                 }
                 Spacer()
-                Text("Add Alarm")
+                Text(sheetVm.title)
                     .bold()
                 Spacer()
                 Button {
                     isShowingSheet.toggle()
-                    vm.addAlarm(time: sheetVm.time, label: sheetVm.label, date: sheetVm.date)
+                    vm.alarmState = .working
+                    switch sheetVm.alarmState {
+                    case .add:
+                        vm.addAlarm(newAlarm: Alarm(id: UUID(), date: sheetVm.date, time: sheetVm.time, label: sheetVm.label, isEnabled: false))
+                    case .edit:
+                        vm.editAlarm(id: sheetVm.alarm!.id, date: sheetVm.date, time: sheetVm.time, label: sheetVm.label)
+                    }
                 } label: {
                     Text("Save")
                         .bold()

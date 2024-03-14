@@ -10,16 +10,30 @@ import SwiftUI
 
 class AlarmViewModel: ObservableObject {
     @Published var alarms: [Alarm] = []
+    enum state {
+        case working
+        case edit
+    }
+    @Published var alarmState: state = .working
     
-    func addAlarm(time: String, label: String, date: Date) {
-        let alarm = Alarm(id: UUID(), date: date, time: time, label: label, isEnabled: false)
-        alarms.append(alarm)
+    func addAlarm(newAlarm: Alarm) {
+        for alarm in alarms {
+            if alarm.time == newAlarm.time {
+                return
+            }
+        }
+        alarms.append(newAlarm)
         // sorts alarms by date from earliest-latest
         alarms.sort(by: {$0.date < $1.date})
     }
     
-    func deleteAlarm(index: Int) {
-        alarms.remove(at: index)
+    func editAlarm(id: UUID, date: Date, time: String, label: String) {
+        for index in alarms.indices {
+            if alarms[index].id == id {
+                alarms[index] = Alarm(id: id, date: date, time: time, label: label, isEnabled: alarms[index].isEnabled)
+            }
+        }
+        alarms.sort(by: {$0.date < $1.date})
     }
     
     func toggleAlarm(index: Int) {
